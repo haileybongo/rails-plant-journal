@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PlantJournal</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <div class="navbar-header">
+      <a class="link" href="<%= root_url %>"/>Home</a>
+      <% if User.find_by(:id => session[:user_id]) %>
+      <a class="link" href="<%= user_path(User.find_by(:id => session[:user_id]))%>"/> <%= User.find_by(:id => session[:user_id]).username%>'s Profile</a>
+      <a class="link" href="<%= logout_path%>"/>Log Out</a>
+      <%else %>
+      <a class="link" href="<%= '/signup'%>"/>Sign Up</a>
+      <a class="link" href="<%= '/signin'%>"/>Login</a>
+      <%end%>
+      </div>   
+  </div>
+
+  <!-- content -->
+  <div class="wrapper"  role="main">
+
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
+  
+    <%= yield %>
+  </div>
+</body>
+</html>
+
+
