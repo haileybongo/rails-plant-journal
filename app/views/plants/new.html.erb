@@ -1,17 +1,3 @@
 <h1> New Plant </h1>
 
-<%= form_for @plant do |plant|%>
-    <%= plant.label :name %>
-    <%= plant.text_field :name %> </br>
-
-    <%= plant.label :characteristics %>
-    <%= plant.text_field :characteristics %> </br>
-
-    <%= plant.label :light,  "Light Preferences" %>
-    <%= plant.text_field :light %> </br>
-
-    <%= plant.label :difficulty, "Difficulty Level (1-5)" %>
-    <%= plant.number_field :difficulty, max: "5" %> </br>
-
-    <%= plant.submit %>
-<%end%>
+<%= render 'form' %>

@@ -1,0 +1,34 @@
+
+<%= form_for @plant do |plant|%>
+    <%= plant.label :name %>
+    <%= plant.text_field :name %> </br>
+
+    <%= plant.label :characteristics %>
+    <%= plant.text_field :characteristics %> </br>
+
+    <%= plant.label :light,  "Light Preferences" %>
+    <%= plant.text_field :light %> </br>
+
+    <%= plant.label :difficulty, "Difficulty Level (1-5)" %>
+    <%= plant.number_field :difficulty, max: "5" %> </br>
+
+
+<h1> New Plant Family Watering Plan </h1>
+
+    <%= plant.fields_for :waters, @water do |water|%>
+
+    <%= water.hidden_field :user_id %>
+
+    <%= water.label :plant_family %>
+    <%= water.text_field :plant_family %> </br>
+
+    <%= water.label :weeks, "Water every __ week(s). Max 6" %>
+    <%= water.number_field :weeks, max: "6" %> </br>
+
+    <%= water.label :soil,  "Soil Moisture" %>
+    <%= water.text_field :soil %> </br>
+
+<%end%>
+
+<%= plant.submit "Create!"%>
+<%end%>

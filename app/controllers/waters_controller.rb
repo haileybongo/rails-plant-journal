@@ -18,6 +18,10 @@ class WatersController < ApplicationController
         @waters = Water.all 
     end
 
+    def show
+        @water = current_water
+    end
+
     def edit
         if current_water.user.id = session[:user_id]
             @water = current_water
@@ -35,7 +39,7 @@ class WatersController < ApplicationController
     private
 
     def current_water
-        Water.find_by(id => params[:id])
+        Water.find_by(:id => params[:id])
     end
 
     def water_params

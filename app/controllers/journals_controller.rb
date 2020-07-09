@@ -8,15 +8,23 @@ class JournalsController < ApplicationController
 
     def create
         binding.pry
+
         @journal = Journal.create(journal_params)
         
-        if @journal.save
-            @journal.save
-            redirect_to journal_path(journal)
+        if @journal.valid?
+            redirect_to user_journal_path(@journal.user, @journal)
         else
-            redirect_to journals_path
+            flash[:alert] = @journal.errors.full_messages
+            redirect_to new_user_journal_path(current_user)
         end
     end
+
+    def show
+        @user = current_user
+        @journal = current_journal
+        binding.pry
+    end
+
 
     def index
         @journals = Journal.all 
@@ -36,13 +44,34 @@ class JournalsController < ApplicationController
         redirect_to journal_path(current_journal)
     end
 
+    def destroy
+        current_journal.destroy.save
+        redirect_to user_path(current_user)
+      end
+
     private
 
     def current_journal
-        Journal.find_by(id => params[:id])
+        Journal.find_by(:id => params[:id])
     end
 
     def journal_params
-        params.require(:journal).permit(:date, :last_watered, :user_id, plant_attributes: [:name, :characteristics, :light, :difficulty], water_attributes: [:plant_family, :weeks, :soil])
-    end
+        if params[:journal][:plant_id] != "" && params[:journal][:water_id] != ""
+            params[:journal].delete :plant_attributes
+            params[:journal].delete :water_attributes
+            params.require(:journal).permit(:date, :last_watered, :user_id, :plant_id, :water_id)
+        elsif params[:journal][:water_id] != ""
+            params[:journal].delete :plant_id
+            params[:journal].delete :water_attributes
+            params.require(:journal).permit(:date, :last_watered, :user_id, :water_id, plant_attributes: [:plant, :user_id, :name, :characteristics, :light, :difficulty])    
+        elsif params[:journal][:plant_id] != ""
+            params[:journal].delete :water_id
+            params[:journal].delete :plant_attributes
+            params.require(:journal).permit(:date, :last_watered, :user_id, :plant_id, water_attributes: [:water, :user_id, :plant_family, :weeks, :soil])
+        else
+            params[:journal].delete :plant_id
+            params[:journal].delete :water_id
+            params.require(:journal).permit(:date, :last_watered, :user_id, plant_attributes: [:plant, :user_id, :name, :characteristics, :light, :difficulty], water_attributes: [:plant, :user_id, :plant_family, :weeks, :soil])
+        end
+      end
 end

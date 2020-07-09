@@ -2,6 +2,7 @@ class PlantsController < ApplicationController
     
     def new
         @plant = Plant.new
+        @water = Water.new
     end
 
     def create
@@ -17,6 +18,10 @@ class PlantsController < ApplicationController
 
     def index
         @plants = Plant.all 
+    end
+
+    def show
+        @plant = current_plant
     end
 
     def edit
@@ -36,10 +41,10 @@ class PlantsController < ApplicationController
     private
 
     def current_plant
-        Plant.find_by(id => params[:id])
+        Plant.find_by(:id => params[:id])
     end
 
     def plant_params
-        params.require(:plant).permit(:name, :characteristics, :light, :difficulty)
+        params.require(:plant).permit(:name, :characteristics, :light, :difficulty, waters_attributes: [:user_id, :plant_family, :weeks, :soil])
     end
 end

@@ -1,12 +1,13 @@
 <h1> <%= @user.username %>'s Plant Journal </h1>
 
-<% if @user.journals.last.water_id %>
+<% if @user.journals %>
 <p>Journal Entries:</p>
 <% @user.journals.each do |journal| %>
-    <div><%= link_to journal.plant.name, plant_path(journal.plant)%></div> 
-  <div><%= link_to journal.water.plant_family, water_path(journal.water) %></div>
+    <div><%= link_to journal.plant.name, user_journal_path(journal.user, journal)%></div> 
 <% end %>
 <% end %>
+</br>
+</br>
 
 <%= link_to "New Entry", new_user_journal_path(@user) %>
 

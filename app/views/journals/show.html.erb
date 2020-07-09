@@ -1,1 +1,20 @@
-<h1> <%=@journal.plant.name %> <%=@journal.water.plant_family %> <%= @journal.user.username %> </h1>
+
+<h1> <%= @user.username %>'s <%=@journal.plant.name %> Journal <h1>
+
+<h3> Date Last Watered <%=@journal.last_watered %> </h3>
+<h3> Date Plant Aquired <%=@journal.date %> </h3>
+</br>
+<h3> Plant Information </h3>
+
+Characteristics: <%= @journal.plant.characteristics %> </br>
+Light Requirements: <%= @journal.plant.light %> </br>
+Difficulty Level: <%= @journal.plant.difficulty %> </br>
+
+ </br>
+ </br>
+
+<h2> <%= @journal.water.plant_family %> Watering Information </h2>
+Water every <%= @journal.water.weeks %> week(s).</br>
+Soil Moisture: <%= @journal.water.soil %></br>
+
+<%= button_to "Delete Entry", journal_path(@journal), method: :delete %>
