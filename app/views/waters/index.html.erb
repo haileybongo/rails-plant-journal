@@ -1,0 +1,9 @@
+<h1> All Watering Schedules </h1>
+
+<%= @waters.each do |w| %>
+
+    <h2> <%= w.plant_family %> Watering Information </h2>
+    Water every <%= w.weeks %> week(s).</br>
+    Soil Moisture: <%= w.soil %></br>
+
+    <%end%>

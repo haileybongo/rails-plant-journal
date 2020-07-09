@@ -1,0 +1,18 @@
+<h1> New Plant Family Watering Plan </h1>
+
+<%= form_for @water do |water|%>
+
+    <%= water.hidden_field :user_id %>
+
+    <%= water.label :plant_family %>
+    <%= water.text_field :plant_family %> </br>
+
+    <%= water.label :weeks, "Water every __ week(s). Max 6" %>
+    <%= water.number_field :weeks, max: "6" %> </br>
+
+    <%= water.label :soil,  "Soil Moisture" %>
+    <%= water.text_field :soil %> </br>
+
+    
+    <%= water.submit "Create!"%>
+<%end%>
