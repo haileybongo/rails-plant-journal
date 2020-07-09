@@ -1,2 +1,4 @@
 <h1> Edit Journal Entry </h1>
 <%= render 'form' %>
+
+<%= button_to "Delete Entry", journal_path(@journal), method: :delete %>

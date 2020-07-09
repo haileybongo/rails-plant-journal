@@ -1,9 +1,30 @@
-<h1> All Watering Schedules </h1>
+<h1> All Watering Plans </h1>
 
-<%= @waters.each do |w| %>
 
-    <h2> <%= w.plant_family %> Watering Information </h2>
-    Water every <%= w.weeks %> week(s).</br>
-    Soil Moisture: <%= w.soil %></br>
-
+    <%= @waters.each do |w| %>
+        
+    <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td><strong>Plant Family</strong></td>
+        <td><strong>Weeks Between waterings</strong></td>
+        <td><strong>Soil Moiusture</strong></td>
+      </tr>
+    
+      <tr>
+        <td><%=w.plant_family%> </td>
+        <td><%=w.weeks%> </td>
+        <td><%=w.soil%></td>
+      </tr>
+    
+    </tbody>
+    </table>
     <%end%>
+
+    <%= link to "Create a New Watering Plan", new_water_path %>
