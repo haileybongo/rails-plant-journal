@@ -1,0 +1,27 @@
+<h1> All Plants </h1>
+
+<% @plants.each do |plant| %>
+    
+<table>
+<thead>
+  <tr>
+    <th colspan="3"></th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td><strong>Name</strong></td>
+    <td><strong>Light Requirements</strong></td>
+    <td><strong>Difficulty Rating</strong></td>
+  </tr>
+
+  <tr>
+    <td><strong> <%=plant.name%> </strong></td>
+    <td><strong><%=plant.light%> </strong></td>
+    <td><strong><%=plant.difficulty%> </strong></td>
+  </tr>
+
+</tbody>
+</table>
+<%end%>
