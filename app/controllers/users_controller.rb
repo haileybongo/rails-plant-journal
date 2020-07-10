@@ -19,7 +19,6 @@ class UsersController < ApplicationController
                 redirect_to '/signup'
             end
         else
-            #flash[:alert] = "Passwords do not match. Please try again."
             redirect_to '/signup', notice: "Passwords do not match. Please try again."
         end
     end
@@ -31,11 +30,12 @@ class UsersController < ApplicationController
     end
 
     def login
-        @user = User.find_by(name: params[:user][:name])
-            if @user 
+        @user = User.find_by(:username => params[:username])
+            if @user.authenticate(params[:password])   
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
             else
+                flash[:alert] = "Username or Password incorrect. Please try again."
              redirect_to '/signin'
             end
     end

@@ -5,10 +5,11 @@ class WatersController < ApplicationController
     end
 
     def create
-        water = Water.create(water_params)
-        if water.save
-            water.save
-            redirect_to water_path(water)
+        @water = Water.create(water_params)
+        if @water.save
+            @water.user_id = current_user.id
+            @water.save
+            redirect_to water_path(@water)
         else
             redirect_to waters_path
         end

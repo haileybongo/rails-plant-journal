@@ -1,3 +1,12 @@
 <h2> <%= @water.plant_family %> Watering Information </h2>
 Water every <%= @water.weeks %> week(s).</br>
 Soil Moisture: <%= @water.soil %></br>
+
+
+<%if @water.plants %>
+<h3> All Plants with this Watering Plan: </h3>
+
+<%= @water.plants.each do |p| %>
+    <%= link_to p.name, plant_path(p) %>
+    <%end%>
+    <%end%>

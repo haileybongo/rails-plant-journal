@@ -1,8 +1,8 @@
+<% if @plants %>
+
 <h1> All Plants </h1>
 
-<% @plants.each do |plant| %>
-    
-<table>
+
 <thead>
   <tr>
     <th colspan="3"></th>
@@ -16,14 +16,22 @@
     <td><strong>Difficulty Rating</strong></td>
   </tr>
 
+<% @plants.each do |plant| %>
+    
+<table>
+
   <tr>
-    <td><strong> <%=plant.name%> </strong></td>
-    <td><strong><%=plant.light%> </strong></td>
-    <td><strong><%=plant.difficulty%> </strong></td>
+    <td><%=plant.name%> </td>
+    <td><%=plant.light%> </td>
+    <td><%=plant.difficulty%> </td>
   </tr>
 
 </tbody>
 </table>
 <%end%>
 
-<%= link to "Create a New Plant", new_plant_path %>
+<%else%>
+<h2> No plants yet :) </h2>
+<%end%>
+
+<%= link_to "Create a New Plant", new_plant_path %>

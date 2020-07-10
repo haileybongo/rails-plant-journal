@@ -3,3 +3,11 @@
 Characteristics: <%= @plant.characteristics %> </br>
 Light Requirements: <%= @plant.light %> </br>
 Difficulty Level: <%= @plant.difficulty %> </br>
+
+<%if @plant.waters %>
+<h3> All Watering Plans associated with this Plant: </h3>
+
+<%= @plant.waters.each do |w| %>
+    <%= link_to w.plant_family, water_path(w) %>
+    <%end%>
+    <%end%>

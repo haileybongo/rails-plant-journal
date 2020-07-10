@@ -9,6 +9,7 @@ class PlantsController < ApplicationController
         binding.pry
         @plant = Plant.create(plant_params)
         if @plant.save
+            @plant.user_id = current_user.id
             @plant.save
             redirect_to plant_path(@plant)
         else
