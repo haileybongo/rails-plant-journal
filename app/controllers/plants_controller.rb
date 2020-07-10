@@ -6,7 +6,7 @@ class PlantsController < ApplicationController
     end
 
     def create
-        binding.pry
+
         @plant = Plant.create(plant_params)
         if @plant.save
             @plant.user_id = current_user.id

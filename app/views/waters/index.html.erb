@@ -6,16 +6,14 @@
     <th colspan="3"></th>
   </tr>
 </thead>
+<tbody>
+<tr>
+  <td><strong>Plant Family</strong></td>
+  <td><strong>Weeks Between waterings</strong></td>
+  <td><strong>Soil Moiusture</strong></td>
+</tr>
 
-    <%= @waters.each do |w| %>
-
-    
-    <tbody>
-      <tr>
-        <td><strong>Plant Family</strong></td>
-        <td><strong>Weeks Between waterings</strong></td>
-        <td><strong>Soil Moiusture</strong></td>
-      </tr>
+    <% @waters.each do |w| %>
     
       <tr>
         <td><%=w.plant_family%> </td>
@@ -25,6 +23,6 @@
     
     </tbody>
     </table>
-    <%end%>
-
+    <%end%> </br> </br>
+    
     <%= link_to "Create a New Watering Plan", new_water_path %>

@@ -7,10 +7,13 @@ class JournalsController < ApplicationController
     end
 
     def create
-        binding.pry
+        
 
         @journal = Journal.create(journal_params)
-        
+        @journal.plant.user_id = current_user.id
+        @journal.water.user_id = current_user.id
+        @journal.save
+
         if @journal.valid?
             redirect_to user_journal_path(@journal.user, @journal)
         else
@@ -22,7 +25,6 @@ class JournalsController < ApplicationController
     def show
         @user = current_user
         @journal = current_journal
-        binding.pry
     end
 
 

@@ -48,6 +48,7 @@ class UsersController < ApplicationController
 
     def show
         if current_user
+        @needs_water = current_user.needs_water
         @user = current_user
         else
             redirect_to '/'
