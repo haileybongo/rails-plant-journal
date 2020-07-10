@@ -6,20 +6,53 @@ class User < ApplicationRecord
     has_secure_password
 
     def needs_water
-        binding.pry
+
         needs_water = []
-        self.plants.each do |plant|
-            
+        self.journals.each do |journal|
+          if journal.water && journal.water.weeks
             days_since_watered = Date.today - journal.last_watered
-            if journal.water.weeks = 1
+            case journal.water.weeks 
+
+            when 1
                 if days_since_watered > 7 
-                    needs_water < journal.plant
+                    needs_water << journal
                 else
                 end
+            when 2
+                if days_since_watered > 14 
+                    needs_water << journal
+                else
+                end
+            when 3
+                if days_since_watered > 21 
+                    needs_water << journal
+                else
+                end
+            when 4
+                if days_since_watered > 28 
+                    needs_water << journal
+                else
+                end
+            when 5
+                if days_since_watered > 36 
+                    needs_water << journal
+                else
+                end
+            when 6
+                if days_since_watered > 43 
+                    needs_water << journal
+                else
+                end
+            else
             end
         end
+        end
+        needs_water
     end
+  
 end
+
+
 
 
             
