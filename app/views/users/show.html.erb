@@ -12,7 +12,7 @@
 
 
 <% if @user.journals %>
-<h4>Journal Entries:</h4>
+<h4>Plant Entries:</h4>
 <% @user.journals.each do |journal| %>
     <div><%= link_to journal.plant.name, user_journal_path(journal.user, journal)%></div> 
 <% end %>

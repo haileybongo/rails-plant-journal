@@ -43,7 +43,7 @@ class JournalsController < ApplicationController
 
     def update
         current_journal.update(journal_params)
-        redirect_to user_journal_path(@journal.user, @journal)
+        redirect_to user_journal_path(current_journal.user.id, current_journal)
     end
 
     def destroy

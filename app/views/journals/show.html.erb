@@ -16,4 +16,8 @@ Difficulty Level: <%= @journal.plant.difficulty %> </br>
 <h2> <%= @journal.water.plant_family %> Watering Information </h2>
 Water every <%= @journal.water.weeks %> week(s).</br>
 Soil Moisture: <%= @journal.water.soil %></br>
+</br>
+</br>
+
+<%= button_to "Update Journal" , edit_user_journal_path(@user.id, @journal), method: :get %>
 

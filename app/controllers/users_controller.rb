@@ -50,7 +50,6 @@ class UsersController < ApplicationController
         if current_user
         @needs_water = current_user.needs_water
         @user = current_user
-        binding.pry
         else
             redirect_to '/'
         end
