@@ -23,27 +23,6 @@ class UsersController < ApplicationController
         end
     end
 
-    def signup
-    end
-
-    def signin
-    end
-
-    def login
-        @user = User.find_by(:username => params[:username])
-            if @user.authenticate(params[:password])   
-                session[:user_id] = @user.id
-                redirect_to user_path(@user)
-            else
-                flash[:alert] = "Username or Password incorrect. Please try again."
-             redirect_to '/signin'
-            end
-    end
-
-    def logout
-        session.delete(:user_id)
-        redirect_to '/'
-    end
 
 
     def show

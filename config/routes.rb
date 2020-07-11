@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :plants, :waters, :journals
   root 'users#welcome'
   get '/signup' => 'users#new'
-  get '/signin' => 'users#signin'
-  post '/signin' => 'users#login'
-  get '/logout' => 'users#logout', as: 'logout'
+  get '/signin' => 'sessions#signin'
+  post '/signin' => 'sessions#login'
+  get '/logout' => 'sessions#logout', as: 'logout'
+  get '/auth/facebook/callback' => 'sessions#create'
 
 end
