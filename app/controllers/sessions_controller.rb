@@ -4,8 +4,12 @@ class SessionsController < ApplicationController
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
           u.username = auth['info']['name']
         end
+
+        @user.save
      
         session[:user_id] = @user.id
+
+        binding.pry
      
         redirect_to user_path(@user)
       end
