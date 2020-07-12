@@ -2,7 +2,7 @@
 
 <% if @needs_water != [] %>
 
-<h4> Your Plants Needing to be Watered </h4>
+<h4> These plants need some water! </h4>
  <% @needs_water.each do |p| %>
     <%= link_to p.plant.name, user_journal_path(@user.id, p) %>: Last watered on <%=p.last_watered %></br>
     <%end%>
@@ -12,7 +12,7 @@
 
 
 <% if @user.journals %>
-<h4>Plant Entries:</h4>
+<h4>All of Your Plant Entries:</h4>
 <% @user.journals.each do |journal| %>
     <div><%= link_to journal.plant.name, user_journal_path(journal.user, journal)%></div> 
 <% end %>

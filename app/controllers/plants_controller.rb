@@ -13,7 +13,8 @@ class PlantsController < ApplicationController
             @plant.save
             redirect_to plant_path(@plant)
         else
-            redirect_to plants_path
+            flash[:alert] = @plant.errors.full_messages
+            redirect_to new_plant_path
         end
     end
 

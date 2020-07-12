@@ -1,8 +1,8 @@
 
 <h1> <%= @user.username %>'s <%=@journal.plant.name %> Journal <h1>
 
-<h3> Date Last Watered <%=@journal.last_watered %> </h3>
-<h3> Date Plant Acquired <%=@journal.date %> </h3>
+<h3> Last Watered On <%=@journal.last_watered %> </h3>
+<h3> Plant Acquired On <%=@journal.date %> </h3>
 </br>
 <h3> Plant Information </h3>
 
@@ -13,7 +13,7 @@ Difficulty Level: <%= @journal.plant.difficulty %> </br>
  </br>
  </br>
 
-<h2> <%= @journal.water.plant_family %> Watering Information </h2>
+<h3> <%= @journal.water.plant_family %> Watering Information </h3>
 Water every <%= @journal.water.weeks %> week(s).</br>
 Soil Moisture: <%= @journal.water.soil %></br>
 </br>

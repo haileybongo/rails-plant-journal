@@ -11,7 +11,8 @@ class WatersController < ApplicationController
             @water.save
             redirect_to water_path(@water)
         else
-            redirect_to waters_path
+            flash[:alert] = @water.errors.full_messages
+            redirect_to new_water_path
         end
     end
 

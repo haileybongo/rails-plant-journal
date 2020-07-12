@@ -10,7 +10,7 @@
     <%= plant.text_field :light %> </br>
 
     <%= plant.label :difficulty, "Difficulty Level (1-5)" %>
-    <%= plant.number_field :difficulty, max: "5" %> </br>
+    <%= plant.number_field :difficulty,min: "0", max: "5" %> </br>
 
 
 <%= plant.submit "Create!"%>
