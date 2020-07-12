@@ -3,19 +3,14 @@ class SessionsController < ApplicationController
     def create
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
           u.username = auth['info']['name']
+          u.password = SecureRandom.hex(8)
         end
-
-        @user.save
      
         session[:user_id] = @user.id
-
-        binding.pry
      
         redirect_to user_path(@user)
       end
      
-
-
     
     def signup
     end

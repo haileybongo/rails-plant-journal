@@ -2,8 +2,9 @@ class User < ApplicationRecord
     has_many :journals
     has_many :waters
     has_many :plants
-    validates :username, presence: true
+    validates :username, presence: true, uniqueness: true
     has_secure_password
+
 
     def needs_water
 

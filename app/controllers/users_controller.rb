@@ -10,12 +10,12 @@ class UsersController < ApplicationController
     def create
         if params[:user][:password] == params[:user][:password_confirmation]
             @user = User.create(user_params)
-            if @user 
+            if @user.valid? 
                 @user.save
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
             else
-                flash[:alert] = "There was a problem with your signup. Please try again."
+                flash[:alert] = @user.errors.full_messages
                 redirect_to '/signup'
             end
         else

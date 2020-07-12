@@ -40,4 +40,4 @@
 yarn-debug.log*
 .yarn-integrity
 
- .env
+/Users/haileybongo/Development/code/Rails/plant-journal/.env
