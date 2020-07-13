@@ -40,6 +40,14 @@ class PlantsController < ApplicationController
         redirect_to plant_path(current_plant)
     end
 
+    def difficult
+    end
+
+    def most_difficult
+    end
+
+
+
     private
 
     def current_plant
