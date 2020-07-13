@@ -11,12 +11,11 @@
 
   <body>
       <div class="navbar-header">
-      <a class="link" href="<%= root_url %>"/>Home</a>
       <a class="link" href="<%= plants_path %>"/>All Plants</a>
       <a class="link" href="<%= waters_path %>"/>All Watering Plans</a>
       <% if User.find_by(:id => session[:user_id]) %>
-      <a class="link" href="<%= new_user_journal_path(session[:user_id]) %>"/>New Journal Entry</a>
       <a class="link" href="<%= user_path(User.find_by(:id => session[:user_id]))%>"/> <%= User.find_by(:id => session[:user_id]).username%>'s Profile</a>
+      <a class="link" href="<%= new_user_journal_path(session[:user_id]) %>"/>New Journal Entry</a>
       <a class="link" href="<%= logout_path%>"/>Log Out</a>
       <%else %>
       <a class="link" href="<%= '/signup'%>"/>Sign Up</a>
