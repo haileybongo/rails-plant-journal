@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#login'
   get '/logout' => 'sessions#logout', as: 'logout'
   get '/auth/facebook/callback' => 'sessions#create'
-
+  get '/difficult' => 'plants#most_difficult'
 end

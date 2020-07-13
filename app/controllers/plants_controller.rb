@@ -40,10 +40,8 @@ class PlantsController < ApplicationController
         redirect_to plant_path(current_plant)
     end
 
-    def difficult
-    end
-
     def most_difficult
+        @most_difficult = Plant.most_difficult
     end
 
 
