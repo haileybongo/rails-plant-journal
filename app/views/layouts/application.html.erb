@@ -27,11 +27,16 @@
   <!-- content -->
   <div class="wrapper"  role="main">
 
+
+
   <% flash.each do |type, msg| %>
-    <div class="alert alert-info">
-      <%= msg %>
+    <div class="alert">
+    <%msg.each do |alt|%>
+      <%= alt %> </br>
+      <%end%>
     </div>
   <% end %>
+
 
     <%= yield %>
   </div>

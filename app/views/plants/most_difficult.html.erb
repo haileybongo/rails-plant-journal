@@ -1,11 +1,10 @@
 <% if @most_difficult %>
     <h1> The most difficult plants are </h1>
-
-    <%binding.pry%>
+    
+    <ul>
     <% @most_difficult.each do |diff| %>
-        <li> <%= diff.name%>  Level <%=diff.difficulty%> difficulty</li>
-        <%end%>
-
+        <li> <h4> <%= diff.name%>:</h4>  Level <%=diff.difficulty%> difficulty</li>
+        <%end%></ul>
     <%else%>
     <h1> No Difficult Plants Yet! </h1>
     <%end%>
