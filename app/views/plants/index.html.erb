@@ -37,4 +37,7 @@
 
 <%= link_to "See Most Difficult Plants", '/difficult' %> </br>
 
+
+<%if session[:user_id] %>
 <%= link_to "Create a New Plant", new_plant_path %>
+<%end%>

@@ -26,4 +26,6 @@
     </table>
     </br> </br>
     
+    <%if session[:user_id] %>
     <%= link_to "Create a New Watering Plan", new_water_path %>
+    <%end%>
