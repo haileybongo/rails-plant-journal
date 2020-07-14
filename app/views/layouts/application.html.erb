@@ -31,6 +31,7 @@
 
   <% flash.each do |type, msg| %>
     <div class="alert">
+
     <%if flash[:alert]%>
     <%msg.each do |alt|%>
       <%= alt %> </br>
@@ -44,10 +45,10 @@
 
     <%= yield %>
   </div>
-</body>
-<div class="footer" >
+  <div class="footer" >
   <p> <strong> PlantJournal </strong> by Hailey Bongo &copy; 2020</p>
 </div>
+</body>
 </html>
 
 
