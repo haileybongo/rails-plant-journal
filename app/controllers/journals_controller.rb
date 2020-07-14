@@ -14,6 +14,7 @@ class JournalsController < ApplicationController
         @journal.water.user_id = current_user.id
         @journal.save
 
+
         if @journal.valid?
             redirect_to user_journal_path(@journal.user, @journal)
         else
@@ -24,7 +25,6 @@ class JournalsController < ApplicationController
 
     def show
         if current_journal.user.id == session[:user_id]
-            binding.pry
             @user = current_user
             @journal = current_journal
         else

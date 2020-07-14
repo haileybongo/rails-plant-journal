@@ -28,7 +28,7 @@ class PlantsController < ApplicationController
     end
 
     def edit
-        binding.pry
+
         if current_plant.user.id == session[:user_id]
             @plant = current_plant
         else

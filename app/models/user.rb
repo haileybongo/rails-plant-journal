@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
         needs_water = []
         self.journals.each do |journal|
-          if journal.water && journal.water.weeks
+          if journal.water && journal.water.weeks && journal.last_watered
             days_since_watered = Date.today - journal.last_watered
             case journal.water.weeks 
 
