@@ -4,7 +4,7 @@
 
 <h4> These plants need some water! </h4>
  <% @needs_water.each do |p| %>
-    <%= link_to p.plant.name, edit_user_journal_path(@user.id, p) %>: Last watered on <%=p.last_watered %></br>
+    <%= link_to p.plant.name, edit_user_journal_path(@user.id, p) %>: Last watered on <%=p.last_watered %> <%= button_to "Water Plant", "/water/#{p.id}", method: :get%></br>
     <%end%>
 
     <%end%> </br>

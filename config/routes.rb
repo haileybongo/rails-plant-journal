@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#logout', as: 'logout'
   get '/auth/facebook/callback' => 'sessions#create'
   get '/difficult' => 'plants#most_difficult'
+  get '/water/:id' => 'journals#water'
+  
 end

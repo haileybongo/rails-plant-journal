@@ -51,6 +51,12 @@ class JournalsController < ApplicationController
         redirect_to user_path(current_user)
       end
 
+    def water
+        current_journal.update_water
+        redirect_to user_path(current_user)
+    end
+
+
     private
 
     def current_journal
