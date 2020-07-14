@@ -16,7 +16,7 @@
       <%= f.collection_select :plant_id, Plant.all, :id, :name, :include_blank => true%> </br>
   
       <%= f.fields_for :plant, @journal.plant do |plant|%>
-        <%= f.hidden_field :user_id %>
+        <%= plant.hidden_field :user_id, :value => session[:user_id]%>
         <h5> Or Create a new plant </h5>
           <%= plant.label :name %>
           <%= plant.text_field :name %> </br>
@@ -41,7 +41,7 @@
       <%= f.collection_select :water_id, Water.all, :id, :plant_family, :include_blank => true%> </br>
   
       <%= f.fields_for :water, @journal.water do |water|%>
-            <%= f.hidden_field :user_id %>
+            <%= water.hidden_field :user_id, :value => session[:user_id]%>
             <h5> Or Create a new plan </h5>
           <%= water.label :plant_family %>
           <%= water.text_field :plant_family %> </br>

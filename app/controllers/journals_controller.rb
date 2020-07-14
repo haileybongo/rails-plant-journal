@@ -4,17 +4,16 @@ class JournalsController < ApplicationController
         @journal = Journal.new(user_id: params[:user_id])
         @journal.plant = Plant.new
         @journal.water = Water.new
+        @user = current_user
     end
 
     def create
         
 
         @journal = Journal.create(journal_params)
-        @journal.plant.user_id = current_user.id
-        @journal.water.user_id = current_user.id
         @journal.save
 
-
+        binding.pry
         if @journal.valid?
             redirect_to user_journal_path(@journal.user, @journal)
         else

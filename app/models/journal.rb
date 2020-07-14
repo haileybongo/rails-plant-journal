@@ -1,7 +1,7 @@
 class Journal < ApplicationRecord
     belongs_to :user
-    belongs_to :plant, optional: true
-    belongs_to :water, optional: true 
+    belongs_to :plant
+    belongs_to :water
     accepts_nested_attributes_for :plant, :water
 
     def update_water
