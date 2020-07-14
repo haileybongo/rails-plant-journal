@@ -7,7 +7,12 @@ Difficulty Level: <%= @plant.difficulty %> </br>
 <%if @plant.waters %>
 <h3> All Watering Plans associated with this Plant: </h3>
 
-<%= @plant.waters.each do |w| %>
-    <%= link_to w.plant_family, water_path(w) %>
+<% @plant.waters.each do |w| %>
+    <%= link_to w.plant_family, water_path(w) %> </br>
     <%end%>
+    <%end%></br>
+    </br>
+
+    <% if @user.id = @plant.user_id %>
+    <%= link_to "Edit this Plant", edit_plant_path(@plant)%>
     <%end%>

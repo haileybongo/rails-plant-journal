@@ -23,6 +23,7 @@ class PlantsController < ApplicationController
     end
 
     def show
+        @user = current_user
         @plant = current_plant
     end
 

@@ -6,7 +6,12 @@ Soil Moisture: <%= @water.soil %></br>
 <%if @water.plants %>
 <h3> All Plants with this Watering Plan: </h3>
 
-<%= @water.plants.each do |p| %>
-    <%= link_to p.name, plant_path(p) %>
+<% @water.plants.each do |p| %>
+    <%= link_to p.name, plant_path(p) %></br>
     <%end%>
+    <%end%> </br>
+    </br>
+
+    <% if @user.id = @water.user_id %>
+    <%= link_to "Edit this Watering Plan", edit_water_path(@water)%>
     <%end%>

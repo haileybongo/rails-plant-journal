@@ -15,7 +15,7 @@
     <% @waters.each do |w| %>
     
       <tr>
-        <td><%=w.plant_family%> </td>
+        <td><%= link_to w.plant_family, water_path(w)%> </td>
         <td style="text-align:center"><%=w.weeks%> </td>
         <td><%=w.soil%></td>
       </tr>

@@ -21,6 +21,7 @@ class WatersController < ApplicationController
     end
 
     def show
+        @user = current_user
         @water = current_water
     end
 

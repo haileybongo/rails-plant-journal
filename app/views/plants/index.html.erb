@@ -21,7 +21,7 @@
 
 
   <tr>
-    <td><%=plant.name%> </td>
+    <td><%= link_to plant.name, plant_path(plant)%> </td>
     <td><%=plant.light%> </td>
     <td style = "text-align:center"><%=plant.difficulty%> </td>
   </tr>
