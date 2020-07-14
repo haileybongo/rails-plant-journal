@@ -13,9 +13,11 @@ Difficulty Level: <%= @journal.plant.difficulty %> </br>
  </br>
  </br>
 
+ <% if @journal.water %>
 <h3> <%= @journal.water.plant_family %> Watering Information </h3>
 Water every <%= @journal.water.weeks %> week(s).</br>
-Soil Moisture: <%= @journal.water.soil %></br>
+Soil Moisture: <%= @journal.water.soil %>
+<%end%></br>
 </br>
 </br>
 

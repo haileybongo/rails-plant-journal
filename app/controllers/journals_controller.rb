@@ -23,12 +23,13 @@ class JournalsController < ApplicationController
     end
 
     def show
-        if current_journal.user.id = session[:user_id]
+        if current_journal.user.id == session[:user_id]
+            binding.pry
             @user = current_user
             @journal = current_journal
         else
-            flash[:alert] = "Sorry, you must be the owner of this journal entry to view it!"
-            redirect_to new_journal_path
+            flash[:msg] = "Sorry, you must be the owner of this journal entry to view it!"
+            redirect_to new_user_journal_path
         end
     end
 

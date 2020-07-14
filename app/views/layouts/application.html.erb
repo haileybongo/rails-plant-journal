@@ -31,8 +31,13 @@
 
   <% flash.each do |type, msg| %>
     <div class="alert">
+    <%binding.pry%>
+    <%if flash[:alert]%>
     <%msg.each do |alt|%>
       <%= alt %> </br>
+      <%end%>
+      <%else%>
+      <%=msg%>
       <%end%>
     </div>
   <% end %>

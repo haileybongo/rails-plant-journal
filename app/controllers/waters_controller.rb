@@ -39,6 +39,12 @@ class WatersController < ApplicationController
         redirect_to water_path(current_water)
     end
 
+    def destroy
+        current_water.destroy.save
+        redirect_to user_path(current_user)
+      end
+
+
     private
 
     def current_water

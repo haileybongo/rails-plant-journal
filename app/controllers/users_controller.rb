@@ -26,14 +26,15 @@ class UsersController < ApplicationController
 
 
     def show
-        if current_user
+        binding.pry
+        if params[:id].to_i == session[:user_id]
         @needs_water = current_user.needs_water
         @user = current_user
         else
-            redirect_to '/'
+            flash[:msg] = "Sorry, you can only view your own profile."
+            redirect_to user_path(current_user)
         end
     end
-
    
     private
    

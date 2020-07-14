@@ -45,6 +45,12 @@ class PlantsController < ApplicationController
         @most_difficult = Plant.most_difficult
     end
 
+    def destroy
+        current_plant.destroy.save
+        redirect_to user_path(current_user)
+      end
+
+
 
 
     private
