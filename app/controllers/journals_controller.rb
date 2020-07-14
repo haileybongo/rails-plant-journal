@@ -29,7 +29,7 @@ class JournalsController < ApplicationController
             @journal = current_journal
         else
             flash[:msg] = "Sorry, you must be the owner of this journal entry to view it!"
-            redirect_to new_user_journal_path
+            redirect_to new_user_journal_path(current_user)
         end
     end
 
@@ -39,7 +39,7 @@ class JournalsController < ApplicationController
     end
 
     def edit
-        if current_journal.user.id = session[:user_id]
+        if current_journal.user.id == session[:user_id]
             @journal = current_journal
         else
             flash[:alert] = "Sorry, you must be the owner of this journal entry to edit it!"
@@ -70,18 +70,24 @@ class JournalsController < ApplicationController
     end
 
     def journal_params
-        if params[:journal][:plant_id] != "" && params[:journal][:water_id] != ""
+        pid = params[:journal][:plant_id]
+        wid = params[:journal][:water_id]
+
+        if pid != "" && wid != ""
             params[:journal].delete :plant_attributes
             params[:journal].delete :water_attributes
             params.require(:journal).permit(:date, :last_watered, :user_id, :plant_id, :water_id)
-        elsif params[:journal][:water_id] != ""
+        
+        elsif wid != ""
             params[:journal].delete :plant_id
             params[:journal].delete :water_attributes
             params.require(:journal).permit(:date, :last_watered, :user_id, :water_id, plant_attributes: [:plant, :user_id, :name, :characteristics, :light, :difficulty])    
-        elsif params[:journal][:plant_id] != ""
+        
+        elsif pid != ""
             params[:journal].delete :water_id
             params[:journal].delete :plant_attributes
             params.require(:journal).permit(:date, :last_watered, :user_id, :plant_id, water_attributes: [:water, :user_id, :plant_family, :weeks, :soil])
+        
         else
             params[:journal].delete :plant_id
             params[:journal].delete :water_id

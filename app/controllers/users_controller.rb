@@ -26,7 +26,6 @@ class UsersController < ApplicationController
 
 
     def show
-        binding.pry
         if params[:id].to_i == session[:user_id]
         @needs_water = current_user.needs_water
         @user = current_user

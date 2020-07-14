@@ -28,11 +28,12 @@ class PlantsController < ApplicationController
     end
 
     def edit
-        if current_plant.user.id = session[:user_id]
+        binding.pry
+        if current_plant.user.id == session[:user_id]
             @plant = current_plant
         else
             flash[:alert] = "Sorry, you must be the owner of this plant to edit it!"
-            redirect_to plant_path(plant)
+            redirect_to plants_path
         end
     end
 

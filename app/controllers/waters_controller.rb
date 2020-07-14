@@ -26,11 +26,11 @@ class WatersController < ApplicationController
     end
 
     def edit
-        if current_water.user.id = session[:user_id]
+        if current_water.user.id == session[:user_id]
             @water = current_water
         else
             flash[:alert] = "Sorry, you must be the owner of this water entry to edit it!"
-            redirect_to water_path(water)
+            redirect_to water_paths
         end
     end
 
