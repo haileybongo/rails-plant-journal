@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :plants, :waters, :journals
   root 'users#welcome'
   get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
   get '/signin' => 'sessions#signin'
   post '/signin' => 'sessions#login'
   get '/logout' => 'sessions#logout', as: 'logout'

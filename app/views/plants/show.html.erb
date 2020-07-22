@@ -15,6 +15,6 @@ Difficulty Level: <%= @plant.difficulty %> </br>
     <%end%></br>
     </br>
 
-    <% if @user.id = @plant.user_id %>
+    <% if @user && @user.id == @plant.user_id %>
     <%= link_to "Edit this Plant", edit_plant_path(@plant)%>
     <%end%>

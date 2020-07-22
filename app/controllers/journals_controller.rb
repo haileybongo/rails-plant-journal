@@ -13,7 +13,6 @@ class JournalsController < ApplicationController
         @journal = Journal.create(journal_params)
         @journal.save
 
-        binding.pry
         if @journal.valid?
             redirect_to user_journal_path(@journal.user, @journal)
         else

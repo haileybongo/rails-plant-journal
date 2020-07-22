@@ -14,7 +14,7 @@ class PlantsController < ApplicationController
             redirect_to plant_path(@plant)
         else
             flash[:alert] = @plant.errors.full_messages
-            redirect_to new_plant_path
+            render :new
         end
     end
 
@@ -50,9 +50,6 @@ class PlantsController < ApplicationController
         current_plant.destroy.save
         redirect_to user_path(current_user)
       end
-
-
-
 
     private
 

@@ -13,6 +13,6 @@ Soil Moisture: <%= @water.soil %></br>
     <%end%> </br>
     </br>
 
-    <% if @user.id = @water.user_id %>
+    <% if @user && @user.id == @water.user_id %>
     <%= link_to "Edit this Watering Plan", edit_water_path(@water)%>
     <%end%>
