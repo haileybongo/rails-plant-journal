@@ -8,12 +8,10 @@ class JournalsController < ApplicationController
     end
 
     def create
-        
-
         @journal = Journal.create(journal_params)
-        @journal.save
 
         if @journal.valid?
+            @journal.save
             redirect_to user_journal_path(@journal.user, @journal)
         else
             flash[:alert] = @journal.errors.full_messages
@@ -46,8 +44,8 @@ class JournalsController < ApplicationController
     end
 
     def update
-        current_journal.update(journal_params)
-        redirect_to user_journal_path(current_journal.user.id, current_journal)
+            current_journal.update(journal_params)
+            redirect_to user_journal_path(current_journal.user.id, current_journal)
     end
 
     def destroy

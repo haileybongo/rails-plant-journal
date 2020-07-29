@@ -1,4 +1,22 @@
 <h1> Edit Journal Entry </h1>
-<%= render 'form' %>
+
+<h2> Plant: <%=@journal.plant.name%> </h2>
+<h2> Watering Plan: <%=@journal.water.plant_family %> </h2>
+
+<%=form_for(@journal) do |f| %>
+
+     
+    <%= f.hidden_field :user_id %>
+  
+      <%=f.label :date, "Date Plant Acquired" %>
+      <%=f.date_field :date %> </br>
+  
+      <%=f.label :last_watered, "Date Last Watered" %>
+      <%=f.date_field :last_watered %></br>
+
+  
+  <%= f.submit %>
+  
+  <%end%>
 
 <%= button_to "Delete Entry", journal_path(@journal), method: :delete %>

@@ -2,11 +2,10 @@ class PlantsController < ApplicationController
     
     def new
         @plant = Plant.new
-        @water = Water.new
+
     end
 
     def create
-
         @plant = Plant.create(plant_params)
         if @plant.save
             @plant.user_id = current_user.id
